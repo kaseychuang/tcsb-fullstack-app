@@ -1,0 +1,34 @@
+.todo{
+    margin: 1em;
+    padding: 1em;
+    text-align: left;
+    color: #028090;
+    display: flex;
+    flex-direction: row;
+    padding: 0.25em;
+}
+
+.todo button{
+    margin-left: auto;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: #ff595e;
+}
+
+.todo button:hover{
+    color: #db222a;
+}
+
+#task-name{
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 1em;
+}
+
+#check-box{
+    margin-left: 100px;
+}
+
