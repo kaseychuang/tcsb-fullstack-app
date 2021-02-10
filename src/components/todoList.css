@@ -1,12 +1,11 @@
 #todo-list{
-    text-align: center;
-    margin: auto;
-    margin-top: 3em;
     width: 50%;
     background-color: #fbfbf2;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 2em auto 2em auto;
     padding: 2em;
     border-radius: 10px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #list{
@@ -28,20 +27,15 @@
 #new-task{
     width: 50%;
     margin-right: 1em;
-    padding: 0.5em;
-    padding-top: 0.25em;
-    padding-bottom: 0.25em;
+    padding: 0.25em 0.5em 0.25em 0.5em;
 }
 
 #add-btn{
-    border: none;
-    background-color: #02c39a;
     color: #fbfbf2;
-    padding: 0.75em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    background-color: #02c39a;
+    border: none;
     border-radius: 5px;
-    
+    padding: 0.5em 0.75em 0.5em 0.75em;
 }
 
 #add-btn:hover{
@@ -69,7 +63,6 @@
 
 hr{
     height: 1px;
-    /* background-color: #fbfbf2; */
     border: none;
 }
 

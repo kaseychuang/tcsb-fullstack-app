@@ -7,14 +7,15 @@ const TodoList = () => {
     const [newTask, setNewTask] = useState("");
     const [showCompleted, setShowCompleted] = useState(false);
 
-    // filter category? (to show further use of state)
-    // pull categories from the database as well? 
-    // would I want a popup to select category then? 
-    
-    // popup for confirming deletion? 
+    // Possible Add-Ons
+        // multiple categories
+        // toggle between categories (multiple lists)
+    // Popup for delete task confirmation
 
     useEffect(() => {
-        // Get todos from database later
+        // TODO: Load todo objects from database 
+
+        // Dummy data for now
         const dummyTodos = [
             {
                 id: 1,
@@ -32,17 +33,9 @@ const TodoList = () => {
                 completed: true
             }
         ];
+
         setTodos(dummyTodos);
     }, []);
-
-    const setCompleted = (id, value) => {
-        // find the task with that id
-        
-    }
-
-    const onDelete = (id) => {
-        
-    }
 
     const renderTodos = () => {
         return todos.map((todo) => {
@@ -52,19 +45,18 @@ const TodoList = () => {
             else{
                 return todo.completed ? null : <Todo key={todo.id} id={todo.id} task={todo.task} completed={todo.completed}/>;
             }
-
         })
     }
 
     const addTodo = (e) => {
-        // Note: later this should connect to backend to add to database
+        // TODO: Replace this with post request to backend
         e.preventDefault();
         setTodos(todos.concat([{
             task: newTask, 
             completed: false,
         }]));
 
-        // reset state
+        // clear input field
         setNewTask("");
     }
 
