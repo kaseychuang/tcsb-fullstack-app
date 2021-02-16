@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Todo from './todo';
 import './todoList.css';
+import '../services/todoservice.js';
+import TodoService from '../services/todoservice.js';
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
@@ -13,7 +15,14 @@ const TodoList = () => {
     // Popup for delete task confirmation
 
     useEffect(() => {
-        // TODO: Load todo objects from database 
+        TodoService.getAllTodos()
+        .then(data =>{
+            setTodos(data);
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });
+        
 
         // Dummy data for now
         const dummyTodos = [
@@ -34,7 +43,7 @@ const TodoList = () => {
             }
         ];
 
-        setTodos(dummyTodos);
+        // setTodos(dummyTodos);
     }, []);
 
     const renderTodos = () => {
@@ -49,15 +58,22 @@ const TodoList = () => {
     }
 
     const addTodo = (e) => {
-        // TODO: Replace this with post request to backend
         e.preventDefault();
+
+        TodoService.addTodo(newTask)
+        .then(data =>{
+            // clear input field
+            setNewTask("");
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });
+
         setTodos(todos.concat([{
             task: newTask, 
             completed: false,
         }]));
 
-        // clear input field
-        setNewTask("");
     }
 
     return (
