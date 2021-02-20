@@ -49,10 +49,10 @@ const TodoList = () => {
     const renderTodos = () => {
         return todos.map((todo) => {
             if (showCompleted){
-                return <Todo key={todo.id} id={todo.id} task={todo.task} completed={todo.completed}/>;
+                return <Todo key={todo.id} id={todo.id} task={todo.task} completed={todo.completed} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
             } 
             else{
-                return todo.completed ? null : <Todo key={todo.id} id={todo.id} task={todo.task} completed={todo.completed}/>;
+                return todo.completed ? null : <Todo key={todo.id} id={todo.id} task={todo.task} completed={todo.completed} deleteTodo={deleteTodo} updateTodo={updateTodo}/>;
             }
         })
     }
@@ -73,7 +73,31 @@ const TodoList = () => {
             task: newTask, 
             completed: false,
         }]));
+    }
+    const deleteTodo = (id) => {
+        TodoService.deleteTodo(id)
+        .then(data =>{
+            console.log("Task deleted!")
+            setTodos(todos.filter((todo)=>
+                todo.id != id
+            ))
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });
+    }
 
+    const updateTodo = (id,task,completed) => {
+        TodoService.updateTodo(id,task,completed)
+        .then(data =>{
+            console.log("Task Updated!")
+            setTodos(todos.map( (todo) => 
+                todo.id === id ? {...todo, task, completed} : todo
+            ))
+        })
+        .catch(err=>{
+            console.log(`Error: ${err}`);
+        });
     }
 
     return (
