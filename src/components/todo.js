@@ -7,19 +7,19 @@ const Todo = ({ id, task, completed, deleteTodo, updateTodo }) => {
 
   // this won't work rn bc we have hard coded completed values in the other component 
   const onChecked = (e) => {
-    if (e.target.checked === true){
-        alert("you completed this task!");
-    }
-    else{
-        alert('you made this task incomplete');
-    }
+    // if (e.target.checked === true){
+    //     alert("you completed this task!");
+    // }
+    // else{
+    //     alert('you made this task incomplete');
+    // }
 
     completed = !completed;
     updateTodo(id, task, completed);
   };
 
   const deleteTask = () => {
-    alert('deleted task');
+    // alert('deleted task');
     deleteTodo(id);
   }
 

@@ -62,6 +62,13 @@ const TodoList = () => {
 
         TodoService.addTodo(newTask)
         .then(data =>{
+            setTodos(todos.concat([{
+                key:data.id,
+                id:data.id,
+                task: newTask, 
+                completed: false,
+            }]));
+
             // clear input field
             setNewTask("");
         })
@@ -69,15 +76,13 @@ const TodoList = () => {
             console.log(`Error: ${err}`);
         });
 
-        setTodos(todos.concat([{
-            task: newTask, 
-            completed: false,
-        }]));
+        
     }
     const deleteTodo = (id) => {
         TodoService.deleteTodo(id)
         .then(data =>{
             console.log("Task deleted!")
+            
             setTodos(todos.filter((todo)=>
                 todo.id != id
             ))
@@ -104,7 +109,7 @@ const TodoList = () => {
         <div id="todo-list">
             <h1 id="list-title">My Todo List</h1>
             <div id="sub-header">
-                <p>Incompleted Tasks: {todos.length}</p>
+                <p>Total Tasks: {todos.length}</p>
                 <label id="show-completed-label">
                     Show completed tasks
                     <input type="checkbox" onChange={(e) => setShowCompleted(e.target.checked)}/>
