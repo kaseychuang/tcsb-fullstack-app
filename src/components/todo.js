@@ -1,5 +1,7 @@
 import React from "react";
 import "./todo.css";
+import "../services/todoservice.js";
+import TodoService from "../services/todoservice.js";
 
 const Todo = ({ id, task, completed }) => {
 
@@ -12,16 +14,26 @@ const Todo = ({ id, task, completed }) => {
         alert('you made this task incomplete');
     }
 
-    // TODO: Update request to backend using id prop
-
-
+    completed = !completed;
+    TodoService.updateTodo(id,task,completed)
+    .then(data =>{
+        console.log("Task Updated!")
+    })
+    .catch(err=>{
+        console.log(`Error: ${err}`);
+    });
   };
 
   const deleteTask = () => {
-      alert('deleted task');
+    alert('deleted task');
 
-    // TODO: Delete request to backend using id prop
-
+    TodoService.deleteTodo(id)
+    .then(data =>{
+        console.log("Task deleted!")
+    })
+    .catch(err=>{
+        console.log(`Error: ${err}`);
+    });
   }
 
   return (
