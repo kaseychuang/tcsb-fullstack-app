@@ -1,0 +1,8 @@
+#home-page{
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#home-page button{
+    display: block;
+}
